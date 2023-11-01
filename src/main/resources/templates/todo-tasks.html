@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Tasks of ToDo List</title>
+</head>
+<body>
+<table>
+    <caption>All tasks</caption>
+    <tr>
+        <th>No</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Priority</th>
+        <th>State</th>
+        <th>State</th>
+        <th>Operations</th>
+    </tr>
+    <tr th:each="task, index: ${tasks}">
+        <td th:text="${index.count}"></td>
+        <td th:text="${task.getId()}"></td>
+        <td th:text="${task.getName()}"></td>
+        <td th:text="${task.getPriority()}"></td>
+        <td th:text="${task.getState().getName()}"></td>
+        <td>
+            <a th:href="@{/tasks/{taskId}/update/todos/{todoId}(taskId=${task.getId()}, todoId=${toDo.getId()})}">Edit</a>
+        </td>
+        <td>
+            <a th:href="@{/tasks/{taskId}/delete/todos/{todoId}(taskId=${task.getId()}, todoId=${toDo.getId()})}">Remove</a>
+        </td>
+    </tr>
+</table>
+
+<form th:action="@{/todos/{id}/add(id=${toDo.getId()})}" method="post">
+    <label for="users">
+        <select name="collabId">
+            <option th:each="notCollaborator: ${notCollaborators}"  id="users" th:value="${notCollaborator.getId()}" th:text="${notCollaborator.getLastName() + ' ' + notCollaborator.getFirstName()}"></option>
+        </select>
+        <input type="submit" value="Add collaborator">
+    </label>
+</form>
+<table>
+    <caption>Collaborators</caption>
+    <tr>
+        <th>No</th>
+        <th>Name</th>
+    </tr>
+    <tr th:each="collaborator, index: ${toDo.getCollaborators()}">
+        <td th:text="${index.count}"></td>
+        <td th:text="${collaborator.getLastName() + ' ' + collaborator.getFirstName()}"></td>
+        <td>
+            <a th:href="@{/todos/{id}/remove(collabId=${collaborator.getId()}, id=${toDo.getId()})}">Remove</a>
+
+        </td>
+    </tr>
+</table>
+</body>
+</html>

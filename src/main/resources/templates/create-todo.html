@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link rel="stylesheet" href="static/css/styles.css">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New ToDo List</title>
+</head>
+<body>
+<div class="main--div">
+<h1>CREATE NEW TODO LIST</h1>
+
+
+<form action="/todos/create-todo" method="post">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" required><br><br>
+
+    <label for="priority">Priority:</label>
+    <select id="priority" name="priority">
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+    </select><br><br>
+
+    <button class="button--task" type="submit">Create</button>
+    <button class="button--clear--task" type="reset">Clear</button>
+</form>
+
+<br>
+<a class="a--user" href="todos-user.html" th:href="/todos/all/users/${user.id}">Go to All ToDo lists of User</a>
+</div>
+</body>
+
+</html>

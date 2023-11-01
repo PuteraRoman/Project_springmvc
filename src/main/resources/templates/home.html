@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link rel="stylesheet" href="static/css/styles.css">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+
+</head>
+<body>
+<div class="main--div">
+<h1 class="header">Welcome to TODO List Application</h1>
+
+<h2 class="header--list">List of Users</h2>
+
+<a href="create-user.html" th:href="@{/users/create}" class="btn btn-light" title="Add new user into database">
+    <i class="bi-plus"></i>&nbsp;<span class="d-none d-sm-inline">Create new User</span>
+</a>
+
+
+<table border="1" class="table--home">
+    <tr>
+        <th>No.</th>
+        <th>ID</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Operations</th>
+    </tr>
+    <tbody>
+    <tr th:each="user,stat : ${users}">
+        <td th:text="${stat.count}">1</td>
+        <td th:text="${user.id}">5</td>
+        <td class="todos-user.html">
+            <a class="a--user" href="todos-user.html" th:href="/todos/all/users/${user.id}">Nick Green</a>
+        </td>
+        <td th:text="${user.email}">nick@mail.com</td>
+        <td class="text-end">
+            <a href="update-user.html"
+               th:href="@{|/users/${user.id}/update|}"
+               class="btn-sm btn-outline-secondary"
+               title="Edit user">
+                <i class="bi-pen"></i><span class="d-none d-md-inline">&nbsp;Edit</span></a>
+            <a href="home.html"
+               th:href="@{|/users/${user.id}/delete|}"
+               class="btn-sm btn-outline-danger" title="Delete user">
+                <i class="bi-x"></i><span class="d-none d-md-inline">&nbsp;Delete</span></a>
+        </td>
+    </tr>
+    <tr th:remove="all">
+        <td>2</td>
+        <td>6</td>
+        <td class="todos-user.html">
+            <a class="a--user" href="todos-user.html" th:href="/todos/all/users/${user.id}">Nora White</a>
+        </td>
+        <td>nora@mail.com</td>
+        <td class="text-end">
+            <a href="update-user.html"
+               class="btn-sm btn-outline-secondary"
+               title="Edit user">
+                <i class="bi-pen"></i><span class="d-none d-md-inline">&nbsp;Edit</span></a>
+            <a href="home.html"
+               th:href="@{|/users/${user.id}/delete|}"
+               class="btn-sm btn-outline-danger" title="Delete user">
+                <i class="bi-x"></i><span class="d-none d-md-inline">&nbsp;Delete</span></a>
+        </td>
+    </tr>
+    <tr th:remove="all">
+        <td>3</td>
+        <td>4</td>
+        <td class="todos-user.html">
+            <a class="a--user" href="todos-user.html" th:href="/todos/all/users/${user.id}">Mike Brown</a>
+        </td>
+        <td>mike@mail.com</td>
+        <td class="text-end">
+            <a href="update-user.html"
+               class="btn-sm btn-outline-secondary"
+               title="Edit user">
+                <i class="bi-pen"></i><span class="d-none d-md-inline">&nbsp;Edit</span></a>
+            <a href="home.html"
+               th:href="@{|/users/${user.id}/delete|}"
+               class="btn-sm btn-outline-danger" title="Delete user">
+                <i class="bi-x"></i><span class="d-none d-md-inline">&nbsp;Delete</span></a>
+        </td>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<footer>
+    <hr/>
+    <p class="text-center">team_3_01 &copy; 2023 ToDo list</p>
+</footer>
+</div>
+</body>
+</html>

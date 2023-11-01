@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<link rel="stylesheet" href="static/css/styles.css">
+<head>
+    <meta charset="UTF-8">
+    <title>Update existing To-Do</title>
+</head>
+<body class="main--div">
+
+<h1>Update existing To-Do</h1>
+
+<form action="/todos/update" method="post">
+    <label class="id" for="id">ID:</label>
+    <input type="text" id="id" name="id" th:field="*{id}" readonly><br><br>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" th:field="*{name}" required><br><br>
+
+    <label for="priority">Priority:</label>
+    <select id="priority" name="priority" th:field="*{priority}">
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+    </select><br><br>
+
+    <label for="status">Status:</label>
+    <select id="status" name="status" th:field="*{status}">
+        <option value="New">New</option>
+        <option value="Doing">Doing</option>
+        <option value="Verify">Verify</option>
+        <option value="Done">Done</option>
+    </select><br><br>
+
+    <button class="button--task" type="submit">Update</button>
+    <button class="button--clear--task" type="reset">Clear</button>
+</form>
+
+<br>
+<a href="todos-user.html" th:href="/todos/all/users/${user.id}">Go to All ToDo lists of User</a>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Task</title>
+</head>
+<body>
+<table>
+    <caption>Update Task</caption>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Priority</th>
+        <th>Status</th>
+    </tr>
+    <tr>
+        <td>
+            <form th:action = "@{/tasks/{task_id}/update/todos/{todo_id}(task_id=${taskDto.getId()}, todo_id=${todo.getId()})}" method="post" th:object="${taskDto}">
+                <label for="id">ID: </label>
+                <input type="text" th:value="${taskDto.getId()}" id="id_hidden" value="${taskDto.getId()}" hidden/>
+                <br><input type="text" th:value="${taskDto.getId()}" id="id" value="${taskDto.getId()}" name="id" readonly/>
+
+                <br><label for="name">Name: </label>
+                <br><input type="text" th:value="${taskDto.getName()}" id="name" value="${taskDto.getId()}" name="name" th:field="*{name}"/>
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></span>
+
+                <br><label for="priority">Priority: </label>
+                <br>
+                <select id="priority" name="priority">
+                    <option th:each="prioritie : ${priorities}" th:value="${prioritie.name()}" th:text="${prioritie.name()}" th:attr="selected=${taskDto.getPriority().equalsIgnoreCase(prioritie.name())} ? 'selected' : null"></option>
+                </select>
+
+                <br><label for="state">Status: </label>
+                <select id="state" name="stateId">
+                    <option th:each="state : ${states}" th:value="${state.getId()}" th:text="${state.getName()}" th:attr="selected=${taskDto.getStateId() == state.id} ? 'selected' : null"></option>
+                </select>
+
+                <br><input type = "submit" value="Update">
+                <input type = "reset" value="Clear">
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

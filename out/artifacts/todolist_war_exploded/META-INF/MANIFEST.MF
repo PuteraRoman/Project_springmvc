@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: Hewlett Packard
+Build-Jdk: 19.0.1
+Implementation-Title: ToDoList
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.softserve.itacademy
+Main-Class: ${start-class}
+

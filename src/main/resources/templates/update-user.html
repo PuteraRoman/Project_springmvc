@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th = "http://www.thymeleaf.org">
+<link rel="stylesheet" href="static/css/styles.css">
+<head>
+    <meta charset = "UTF-8">
+    <title>Update User</title>
+    <link rel = "stylesheet" th:href = "@{/css/main.css}"/>
+</head>
+<body class="main--div">
+
+<form th:action = "@{/users/update}" th:object = "${userDto}" method="post">
+    <label for="hidden-id"></label>
+    <input type="text" id="hidden-id" name="id" th:value = "${userDto.id}" hidden>
+
+    <label for="id">ID: </label>
+    <p><input type="text" id="id" th:value="${userDto.getId()}" readonly></p>
+
+    <label for="first-name">First name:</label>
+    <p><input type="text" id="first-name" name="firstName" th:value="${userDto.getFirstName()}" th:field="*{firstName}" /></p>
+    <p><span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span></p>
+
+    <label for="last-name">Last name: </label>
+    <p> <input type="text" id="last-name" th:value="${userDto.getLastName()}" name="lastName" th:field="*{lastName}"/></p>
+    <p><span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span></p>
+
+    <label for="email">Email: </label>
+    <p> <input type="text" id="email" th:value="${userDto.getEmail()}" name="email" th:field="*{email}"/></p>
+    <p><span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span></p>
+
+    <label for="old-password">Old password: </label>
+    <p> <input type="password" id="old-password" name="old-password" disabled /></p>
+
+    <label for="new-password">New password: </label>
+    <p> <input type="password" id="new-password" name="password" th:field="*{password}"/></p>
+    <p><span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span></p>
+
+    <label for="roles">
+        <p><select id="roles" name = "roleId">
+            <option th:each="role: ${roles}" th:value="${role.id}" th:text="${role.name}" th:attr="selected=${role.id == userDto.roleId} ? 'selected' : null">
+        </select>
+        </p>
+    </label>
+    <input class="button--task" type = "submit" value = "Update user">
+    <input class="button--clear--task" type = "reset">
+</form>
+</body>
+</html>

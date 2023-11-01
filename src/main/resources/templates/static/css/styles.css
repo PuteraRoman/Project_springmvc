@@ -1,0 +1,89 @@
+.header--list{
+    font-size: 30px;
+    color: #004bbf;
+}
+.header{
+  font-size: 17px;
+  color: #848585;
+}
+.main--div{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #004bbf;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 15px;
+}
+.btn:hover {
+    background-color: #5d3ef3;
+}
+th{
+    border:none;
+}
+td{
+    border:none;
+}
+.table--home{
+    color: #0808ff;
+    border: blue;
+    border-style: dashed;
+}
+.text-center{
+    color: #979797;
+}
+.button--task{
+    background-color: blue;
+    color: white;
+    border: solid;
+}
+.button--task:hover{
+    color: deepskyblue;
+}
+.button--clear--task{
+    border: none;
+}
+.button--clear--task:hover{
+    color: blue;
+}
+h1 {
+    font-size: 20px;
+}
+.a--user{
+    margin-right: 30px;
+    text-decoration: none;
+}
+.a--user:hover{
+    color: aqua;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    color: aqua;
+}
+.email{
+    margin-right:22px;
+}
+.user--info{
+    margin-top: 25px;
+}
+.todo--list{
+    border: dashed;
+}
+.table{
+    border: dashed;
+    margin-top: 20px;
+}
+.id{
+    margin-right: 20px;
+}

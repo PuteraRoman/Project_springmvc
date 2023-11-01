@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="static/css/styles.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Task</title>
+</head>
+<div class="main--div">
+<body>
+
+<h2 class="create--task">Create New Task:</h2>
+<form action="/create/todos/{todo_id}" method="post" th:object="${task}" id="userForm">
+
+    <label for="name">Name: </label>
+    <input type="text"  name="name" th:value="task.name" th:field="*{name}"id="name">
+    <br><br>
+    <label for="priority"> Priority:</label>
+     <select th:field="*{priority}" id="priority">
+    <option value="HIGH">High</option>
+    <option value="MEDIUM">Medium</option>
+    <option value="LOW">Low</option>
+</select>
+    <input type="hidden" th:field="*{stateId}" th:value="5">
+    <br><br>
+    <button class="button--task" type="submit">Create Task</button>
+    <button class="button--clear--task" type="reset" form="userForm">Clear</button>
+</form>
+</body>
+</div>
+</html>
